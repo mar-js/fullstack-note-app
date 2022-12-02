@@ -1,0 +1,13 @@
+FROM node
+
+WORKDIR /usr/src/client_app
+
+COPY ./frontend/package*.json ./
+
+RUN yarn
+
+COPY ./frontend .
+
+EXPOSE 5173
+
+CMD ["yarn", "dev"]
