@@ -1,0 +1,41 @@
+version: "3.9"
+
+services:
+  frontend:
+    working_dir: /app/frontend
+    build:
+      context: ./frontend
+      dockerfile: ./DockerFile
+    restart: always
+    ports:
+      - 5173:5173
+    expose:
+      - 5173
+
+  backend:
+    working_dir: /app/backend
+    build:
+      context: ./backend
+      dockerfile: ./DockerFile
+    restart: always
+    ports:
+      - 3003:3003
+    expose:
+      - 3003
+
+  database:
+    image: mysql
+    working_dir: /app/database
+    build:
+      context: ./database
+      dockerfile: ./DockerFile
+    volumes:
+      - my-db:/var/lib/mysql
+      - ./sqlinit/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+
+volumes:
+  my-db:

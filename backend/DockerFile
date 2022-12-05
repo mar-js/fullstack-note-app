@@ -1,13 +1,22 @@
 FROM node
 
-WORKDIR /usr/src/server_app
+WORKDIR /app/backend
 
-COPY ./backend/package*.json ./
+ENV DB=notesdb
+ENV DB_USER=root
+ENV DB_PASSWORD=notespassword
+ENV DB_HOST=localhost
+ENV DB_PORT=3306
+
+COPY ./package.json /app/backend
+COPY ./yarn.lock /app/backend
+COPY ./tsconfig.json /app/backend
+COPY ./tsconfig.node.json /app/backend
 
 RUN yarn
 
-COPY ./backend .
+COPY . .
 
 EXPOSE 3003
 
-CMD ["yarn", "dev"]
+CMD yarn dev
