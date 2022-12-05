@@ -7,13 +7,13 @@
 #### 1. Clone
 
 ```
-git clone git@github.com:mar-js/fullstack-note-app.git
+git clone git@github.com:mar-js/fullstack-notes-app.git
 ```
 
 or
 
 ```
-git clone https://github.com/mar-js/fullstack-note-app.git
+git clone https://github.com/mar-js/fullstack-notes-app.git
 ```
 
 #### 2. Enter to folder
